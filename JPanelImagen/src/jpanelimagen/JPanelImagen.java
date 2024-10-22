@@ -5,7 +5,6 @@
 package jpanelimagen;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.io.File;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
