@@ -5,12 +5,13 @@
 package jpanelimagen;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  *
  * @author agalmad
  */
-public class ImagenFondo {
+public class ImagenFondo implements Serializable{
     
     private File rutaImagen;
     private Float opacidad;
