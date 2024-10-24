@@ -95,7 +95,14 @@ public class ImagenFondoPanel extends javax.swing.JPanel {
                 
     }//GEN-LAST:event_jButtonAbrirRutaActionPerformed
 
-
+    
+    public ImagenFondo getSelectedValues(){
+        File f = new File(jTextFieldRuta.getText());
+        Float opacidad = (float)jSliderOpacidad.getValue()/100f ;
+        return new ImagenFondo(f,opacidad);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAbrirRuta;
     private javax.swing.JLabel jLabel1;
