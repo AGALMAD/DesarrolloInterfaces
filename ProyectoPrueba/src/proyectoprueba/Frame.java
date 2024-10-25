@@ -4,6 +4,10 @@
  */
 package proyectoprueba;
 
+import java.io.File;
+import jpanelimagen.ArrastreListener;
+import jpanelimagen.ImagenFondo;
+
 /**
  *
  * @author agalmad
@@ -15,6 +19,23 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
+        
+        jPanelImagen1.addArrastreListener(new ArrastreListener()
+            {
+                @Override
+                public void arrastre() {
+                    System.out.println("Se ha producido un arrastre");
+                    jPanelImagen1.setImagenFondo(new ImagenFondo(new File("C:\\Users\\galve\\OneDrive\\Documentos\\2DAM\\2DAM\\DesarrolloInterfaces\\T1\\DesarrolloInterfaces\\JPanelImagen\\src\\Images\\animales-en-granja.jpg") , 0.8f));
+                   
+                }
+                    
+            }
+        
+        
+        );
+        
+        
+        
     }
 
     /**
