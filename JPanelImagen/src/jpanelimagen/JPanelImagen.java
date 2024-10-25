@@ -34,8 +34,6 @@ public class JPanelImagen extends JPanel implements Serializable{
     
     
     
-    
-    
 
     @Override
     protected void paintComponent(Graphics g) {
