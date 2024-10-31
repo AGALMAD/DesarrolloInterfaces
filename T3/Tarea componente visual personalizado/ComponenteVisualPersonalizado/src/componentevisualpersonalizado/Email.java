@@ -22,7 +22,7 @@ public class Email extends javax.swing.JPanel implements Serializable {
      * Creates new form Email
      */
     
-    private final String emailTextInicio = "email@gmail.com";
+    private final String pista = "email@gmail.com";
     
     private String errorText;
     private String emailText;
@@ -128,11 +128,20 @@ public class Email extends javax.swing.JPanel implements Serializable {
 
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelError = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
-        jTextFieldEmail.setForeground(new java.awt.Color(153, 153, 153));
+        jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldEmail.setText("email@gmail.com");
         jTextFieldEmail.setToolTipText("");
         jTextFieldEmail.setBorder(null);
+        jTextFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldEmailFocusLost(evt);
+            }
+        });
         jTextFieldEmail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextFieldEmailMouseClicked(evt);
@@ -152,27 +161,34 @@ public class Email extends javax.swing.JPanel implements Serializable {
         jLabelError.setForeground(new java.awt.Color(204, 0, 0));
         jLabelError.setText("Email Incorrecto");
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelError)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jLabelError.setVisible(false);
@@ -197,10 +213,20 @@ public class Email extends javax.swing.JPanel implements Serializable {
     }//GEN-LAST:event_jTextFieldEmailKeyPressed
 
     private void jTextFieldEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldEmailMouseClicked
-        if (jTextFieldEmail.getText().equals(emailTextInicio)) {
+        
+    }//GEN-LAST:event_jTextFieldEmailMouseClicked
+
+    private void jTextFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEmailFocusGained
+        if (jTextFieldEmail.getText().equals(pista)) {
             jTextFieldEmail.setText("");
         }
-    }//GEN-LAST:event_jTextFieldEmailMouseClicked
+    }//GEN-LAST:event_jTextFieldEmailFocusGained
+
+    private void jTextFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEmailFocusLost
+        if (jTextFieldEmail.getText().equals("")) {
+            jTextFieldEmail.setText(pista);
+        }
+    }//GEN-LAST:event_jTextFieldEmailFocusLost
 
 
     // Validar una dirección de correo electrónico usando el validador
@@ -218,6 +244,7 @@ public class Email extends javax.swing.JPanel implements Serializable {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelError;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldEmail;
     // End of variables declaration//GEN-END:variables
 }
