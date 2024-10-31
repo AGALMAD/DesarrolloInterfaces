@@ -4,6 +4,7 @@
  */
 package componentevisualpersonalizado;
 
+import java.awt.Color;
 import java.io.Serializable;
 import org.apache.commons.validator.routines.EmailValidator;
 
@@ -18,6 +19,33 @@ public class Email extends javax.swing.JPanel implements Serializable {
     /**
      * Creates new form Email
      */
+    
+    private String errorText;
+    private String emailText;
+    
+    private Color errorColor;
+    private Color emailColor;
+    
+    
+
+    public String getErrorText() {
+        return errorText;
+    }
+
+    public void setErrorText(String errorText) {
+        this.errorText = errorText;
+    }
+
+    public String getEmailText() {
+        return emailText;
+    }
+
+    public void setEmailText(String emailText) {
+        this.emailText = emailText;
+    }
+
+    
+    
     public Email() {
         initComponents();
     }
