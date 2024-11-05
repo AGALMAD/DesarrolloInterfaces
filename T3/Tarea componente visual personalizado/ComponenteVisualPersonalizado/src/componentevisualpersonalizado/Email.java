@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.Serializable;
 import static javax.swing.BorderFactory.createLineBorder;
+import javax.swing.border.Border;
 import org.apache.commons.validator.routines.EmailValidator;
 
 
@@ -22,22 +23,13 @@ public class Email extends javax.swing.JPanel implements Serializable {
      * Creates new form Email
      */
     
-    private final String pista = "email@gmail.com";
+    private final String pista = "tunombre@ejemplo.es";
     
-    private String errorText;
-    private String emailText;
+    private Color borderErrorColor = Color.RED;
+    private Color borderNormalColor = Color.BLACK;
     
-    private Color errorColor = Color.RED;
-    private Color emailColor = Color.BLACK;
-    
-    private Color emailBorderColor = Color.GREEN;
-    private Color emailBorderColorError = Color.RED;
 
-    
-    private Font errorFont;
-    private Font emailFont;
-
-    //Cambiar Color
+    //Cambiar Color del texto de error
     public Color getErrorColor() {
         return jLabelError.getForeground();
     }
@@ -46,36 +38,43 @@ public class Email extends javax.swing.JPanel implements Serializable {
         jLabelError.setForeground(errorColor);
     }
 
-    public Color getEmailColor() {
+    //Cambiar el color del texto del email
+    public Color getEmailTextColor() {
         return jTextFieldEmail.getForeground();
     }
 
-    public void setEmailColor(Color emailColor) {
+    public void setEmailTextColor(Color emailColor) {
         jTextFieldEmail.setForeground(emailColor);
     }
 
-    //Cambiar el color del borde del email
-    public Color getEmailBorderColor() {
-        return emailBorderColor;
+
+    //Método para cambiar el color del borde del text fiel
+    public void setBorderColor(Color emailBorderColor) {
+        jTextFieldEmail.setBorder(createLineBorder(emailBorderColor,1,false));
     }
 
-    public void setEmailBorderColor(Color emailBorderColor) {
-        this.emailBorderColor = emailBorderColor;
+    //Cambiar el color del borde cuando da error
+    public Color getBorderErrorColor() {
+        return borderErrorColor;
     }
 
-    public Color getEmailBorderColorError() {
-        return emailBorderColorError;
+    public void setBorderErrorColor(Color borderErrorColor) {
+        this.borderErrorColor = borderErrorColor;
     }
 
-    public void setEmailBorderColorError(Color emailBorderColorError) {
-        this.emailBorderColorError = emailBorderColorError;
+    //Cambiar el color del borde cuando no existen errores
+    public Color getBorderNormalColor() {
+        return borderNormalColor;
     }
+
+    public void setBorderNormalColor(Color borderNormalColor) {
+        this.borderNormalColor = borderNormalColor;
+    }
+
+   
     
     
-    
-    
-    
-    //Cambiar Fuentes
+    //Cambiar Fuente del error
     public Font getErrorFont() {
         return jLabelError.getFont();
     }
@@ -83,7 +82,8 @@ public class Email extends javax.swing.JPanel implements Serializable {
     public void setErrorFont(Font errorFont) {
         jLabelError.setFont(errorFont);
     }
-
+    
+    //Cambiar Fuente del email
     public Font getEmailFont() {
         return jTextFieldEmail.getFont();
     }
@@ -94,7 +94,7 @@ public class Email extends javax.swing.JPanel implements Serializable {
     
     
     
-    //Cambiar el texto
+    //Cambiar el texto del error
     public String getErrorText() {
         return jLabelError.getText();
     }
@@ -103,6 +103,7 @@ public class Email extends javax.swing.JPanel implements Serializable {
         jLabelError.setText(errorText);
     }
 
+    //Cambiar el texto del email
     public String getEmailText() {
         return jTextFieldEmail.getText();
     }
@@ -110,7 +111,35 @@ public class Email extends javax.swing.JPanel implements Serializable {
     public void setEmailText(String emailText) {
         jTextFieldEmail.setText(emailText);
     }
+    
+    
+    //Hint
+    //Cambiar el texto del hint
+    public String getHintText() {
+        return jLabelHint.getText();
+    }
 
+    public void setHintText(String hintText) {
+        jLabelHint.setText(hintText);
+    }
+    
+    //Cambiar Color del texto de hint
+    public Color getHintColor() {
+        return jLabelHint.getForeground();
+    }
+
+    public void setHintColor(Color hintColor) {
+        jLabelHint.setForeground(hintColor);
+    }
+    
+    //Cambiar Fuente del error
+    public Font getHintFont() {
+        return jLabelHint.getFont();
+    }
+
+    public void setHintFont(Font hintFont) {
+        jLabelHint.setFont(hintFont);
+    }
     
     
     public Email() {
@@ -126,14 +155,20 @@ public class Email extends javax.swing.JPanel implements Serializable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelHint = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelError = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelHint.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelHint.setText("tunombre@ejemplo.es");
+        add(jLabelHint, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 328, -1));
 
         jTextFieldEmail.setForeground(new java.awt.Color(0, 0, 0));
-        jTextFieldEmail.setText("email@gmail.com");
         jTextFieldEmail.setToolTipText("");
-        jTextFieldEmail.setBorder(null);
+        jTextFieldEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldEmailFocusGained(evt);
@@ -156,42 +191,19 @@ public class Email extends javax.swing.JPanel implements Serializable {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldEmailKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldEmailKeyReleased(evt);
+            }
         });
+        add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 6, 333, 30));
 
         jLabelError.setForeground(new java.awt.Color(204, 0, 0));
         jLabelError.setText("Email Incorrecto");
-
-        jTextField1.setText("jTextField1");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelError)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
+        add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 320, -1));
         jLabelError.setVisible(false);
+
+        jLabel1.setText("Correo :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 7, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
@@ -199,34 +211,37 @@ public class Email extends javax.swing.JPanel implements Serializable {
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
     private void jTextFieldEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailKeyPressed
-        if(emailValidator(jTextFieldEmail.getText())){
-            jLabelError.setVisible(false);
-            jTextFieldEmail.setBorder(createLineBorder(emailBorderColor));
-
-        }
-        else{
-            jLabelError.setVisible(true);
-            jTextFieldEmail.setBorder(createLineBorder(emailBorderColorError));
-
-        }
+        
 
     }//GEN-LAST:event_jTextFieldEmailKeyPressed
 
     private void jTextFieldEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldEmailMouseClicked
-        
     }//GEN-LAST:event_jTextFieldEmailMouseClicked
 
     private void jTextFieldEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEmailFocusGained
-        if (jTextFieldEmail.getText().equals(pista)) {
-            jTextFieldEmail.setText("");
-        }
+        jLabelHint.setVisible(false);
+
     }//GEN-LAST:event_jTextFieldEmailFocusGained
 
     private void jTextFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEmailFocusLost
         if (jTextFieldEmail.getText().equals("")) {
-            jTextFieldEmail.setText(pista);
+            jLabelHint.setVisible(true);
+
         }
     }//GEN-LAST:event_jTextFieldEmailFocusLost
+
+    private void jTextFieldEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailKeyReleased
+        if(emailValidator(jTextFieldEmail.getText())){
+            jLabelError.setVisible(false);
+            setBorderColor(borderNormalColor);
+
+        }
+        else{
+            jLabelError.setVisible(true);
+            setBorderColor(borderErrorColor);
+
+        }
+    }//GEN-LAST:event_jTextFieldEmailKeyReleased
 
 
     // Validar una dirección de correo electrónico usando el validador
@@ -243,8 +258,9 @@ public class Email extends javax.swing.JPanel implements Serializable {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelError;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabelHint;
     private javax.swing.JTextField jTextFieldEmail;
     // End of variables declaration//GEN-END:variables
 }
