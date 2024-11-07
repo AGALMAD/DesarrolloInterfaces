@@ -22,9 +22,7 @@ public class Email extends javax.swing.JPanel implements Serializable {
     /**
      * Creates new form Email
      */
-    
-    private final String pista = "tunombre@ejemplo.es";
-    
+        
     private Color borderErrorColor = Color.RED;
     private Color borderNormalColor = Color.BLACK;
     
