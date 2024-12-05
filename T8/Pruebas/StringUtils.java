@@ -12,4 +12,10 @@ public class StringUtils {
 
         return reversed.toString();
     }
+
+
+    public boolean esPalindromo(String palabra){
+        return  reverse(palabra).equals(palabra);
+    }
+
 }
