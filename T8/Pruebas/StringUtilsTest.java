@@ -4,11 +4,11 @@ import org.junit.Test;
 
 public class StringUtilsTest {
     @Test
-    public void testReverse_hola() {
+    public void testReverse_cat() {
 
         //Arrange
-        String frase = "hola";
-        String resultadoObtener = "aloh";
+        String frase = "cat";
+        String resultadoObtener = "tac";
 
         //Act
         StringUtils stringUtils = new StringUtils();
@@ -22,11 +22,11 @@ public class StringUtilsTest {
     }
 
     @Test
-    public void testReverse_adios() {
+    public void testReverse_dog() {
 
         //Arrange
-        String frase = "adios";
-        String resultadoObtener = "soida";
+        String frase = "dog";
+        String resultadoObtener = "god";
 
         //Act
         StringUtils stringUtils = new StringUtils();
@@ -38,6 +38,25 @@ public class StringUtilsTest {
 
 
     }
+
+    @Test
+    public void testReverse_apple() {
+
+        //Arrange
+        String frase = "apple";
+        String resultadoObtener = "elppa";
+
+        //Act
+        StringUtils stringUtils = new StringUtils();
+        String resultadoObtenido = stringUtils.reverse(frase);
+
+
+        //Assert
+        assertEquals(resultadoObtener, resultadoObtenido);
+
+
+    }
+
 
     
     @Test
